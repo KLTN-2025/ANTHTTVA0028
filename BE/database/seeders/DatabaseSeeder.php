@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\NguoiDung;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +13,38 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Tạo tài khoản quản trị mặc định
+        NguoiDung::firstOrCreate(
+            ['email' => 'admin@agoralearn.com'],
+            [
+                'ho_ten' => 'Administrator',
+                'mat_khau' => Hash::make('password'),
+                'vai_tro' => 'quan_tri',
+                'trang_thai' => 1,
+            ]
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Tạo tài khoản giảng viên mẫu
+        NguoiDung::firstOrCreate(
+            ['email' => 'giangvien@agoralearn.com'],
+            [
+                'ho_ten' => 'Giảng Viên Mẫu',
+                'mat_khau' => Hash::make('password'),
+                'vai_tro' => 'giang_vien',
+                'trang_thai' => 1,
+            ]
+        );
+
+        // Tạo tài khoản học viên mẫu
+        NguoiDung::firstOrCreate(
+            ['email' => 'hocvien@agoralearn.com'],
+            [
+                'ho_ten' => 'Học Viên Mẫu',
+                'mat_khau' => Hash::make('password'),
+                'vai_tro' => 'hoc_vien',
+                'trang_thai' => 1,
+            ]
+        );
     }
 }
+
