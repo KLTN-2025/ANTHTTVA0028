@@ -2,19 +2,16 @@
 
 namespace Database\Factories;
 
+use App\Models\NguoiDung;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\NguoiDung>
  */
 class UserFactory extends Factory
 {
-    /**
-     * The current password being used by the factory.
-     */
-    protected static ?string $password;
+    protected $model = NguoiDung::class;
 
     /**
      * Define the model's default state.
@@ -24,21 +21,32 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'ho_ten' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'mat_khau' => Hash::make('password'),
+            'vai_tro' => 'hoc_vien',
+            'anh_dai_dien' => null,
+            'trang_thai' => 1,
         ];
     }
 
     /**
-     * Indicate that the model's email address should be unverified.
+     * Chỉ định vai trò là giảng viên
      */
-    public function unverified(): static
+    public function giangVien(): static
     {
         return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
+            'vai_tro' => 'giang_vien',
+        ]);
+    }
+
+    /**
+     * Chỉ định vai trò là quản trị
+     */
+    public function quanTri(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'vai_tro' => 'quan_tri',
         ]);
     }
 }
