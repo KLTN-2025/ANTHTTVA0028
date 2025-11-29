@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #fff7ed;
+  --color-primary-100: #ffedd5;
+  --color-primary-200: #fed7aa;
+  --color-primary-300: #fdba74;
+  --color-primary-400: #fb923c;
+  --color-primary-500: #f97316;
+  --color-primary-600: #ea580c;
+  --color-primary-700: #c2410c;
+  --color-primary-800: #9a3412;
+  --color-primary-900: #7c2d12;
+  --color-primary-950: #431407;
+
+  --color-border: hsl(20 5.9% 90%);
+  --color-input: hsl(20 5.9% 90%);
+  --color-ring: hsl(24.6 95% 53.1%);
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(20 14.3% 4.1%);
+
+  --color-primary: hsl(24.6 95% 53.1%);
+  --color-primary-foreground: hsl(60 9.1% 97.8%);
+
+  --color-secondary: hsl(60 4.8% 95.9%);
+  --color-secondary-foreground: hsl(24 9.8% 10%);
+
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(60 9.1% 97.8%);
+
+  --color-muted: hsl(60 4.8% 95.9%);
+  --color-muted-foreground: hsl(25 5.3% 44.7%);
+
+  --color-accent: hsl(60 4.8% 95.9%);
+  --color-accent-foreground: hsl(24 9.8% 10%);
+
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(20 14.3% 4.1%);
+
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(20 14.3% 4.1%);
+
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
+}
+
+/* Dark mode overrides if needed, though v4 handles dark mode differently. 
+   For now, keeping it simple with CSS variables mapping. */
+.dark {
+  --color-background: hsl(20 14.3% 4.1%);
+  --color-foreground: hsl(60 9.1% 97.8%);
+  --color-card: hsl(20 14.3% 4.1%);
+  --color-card-foreground: hsl(60 9.1% 97.8%);
+  --color-popover: hsl(20 14.3% 4.1%);
+  --color-popover-foreground: hsl(60 9.1% 97.8%);
+  --color-primary: hsl(20.5 90.2% 48.2%);
+  --color-primary-foreground: hsl(60 9.1% 97.8%);
+  --color-secondary: hsl(12 6.5% 15.1%);
+  --color-secondary-foreground: hsl(60 9.1% 97.8%);
+  --color-muted: hsl(12 6.5% 15.1%);
+  --color-muted-foreground: hsl(24 5.4% 63.9%);
+  --color-accent: hsl(12 6.5% 15.1%);
+  --color-accent-foreground: hsl(60 9.1% 97.8%);
+  --color-destructive: hsl(0 62.8% 30.6%);
+  --color-destructive-foreground: hsl(60 9.1% 97.8%);
+  --color-border: hsl(12 6.5% 15.1%);
+  --color-input: hsl(12 6.5% 15.1%);
+  --color-ring: hsl(20.5 90.2% 48.2%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
