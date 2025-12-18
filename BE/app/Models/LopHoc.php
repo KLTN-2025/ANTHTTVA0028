@@ -40,7 +40,7 @@ class LopHoc extends Model
      */
     public function giangVien(): BelongsTo
     {
-        return $this->belongsTo(NguoiDung::class, 'giang_vien_id');
+        return $this->belongsTo(GiangVien::class, 'giang_vien_id');
     }
 
     /**

@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Sanctum\HasApiTokens;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 
 class NguoiDung extends Authenticatable
 {
-    use HasFactory, Notifiable, TwoFactorAuthenticatable;
+    use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
 
     protected $table = 'nguoi_dungs';
 
@@ -18,7 +19,7 @@ class NguoiDung extends Authenticatable
         'ho_ten',
         'email',
         'mat_khau',
-        'vai_tro',
+
         'anh_dai_dien',
         'trang_thai',
     ];
@@ -43,13 +44,7 @@ class NguoiDung extends Authenticatable
         return $this->mat_khau;
     }
 
-    /**
-     * Các lớp học mà người dùng là giảng viên
-     */
-    public function lopHocGiangDay(): HasMany
-    {
-        return $this->hasMany(LopHoc::class, 'giang_vien_id');
-    }
+
 
     /**
      * Các đăng ký học của học viên

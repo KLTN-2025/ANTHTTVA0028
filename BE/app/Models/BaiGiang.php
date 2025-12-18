@@ -64,6 +64,14 @@ class BaiGiang extends Model
     }
 
     /**
+     * Bài tập của bài giảng (HasOne)
+     */
+    public function baiTap()
+    {
+        return $this->hasOne(BaiTap::class, 'bai_giang_id');
+    }
+
+    /**
      * Các bài kiểm tra của bài giảng
      */
     public function baiKiemTras(): HasMany

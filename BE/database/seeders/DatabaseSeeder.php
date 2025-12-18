@@ -13,27 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Tạo tài khoản quản trị mặc định
-        NguoiDung::firstOrCreate(
-            ['email' => 'admin@agoralearn.com'],
-            [
-                'ho_ten' => 'Administrator',
-                'mat_khau' => Hash::make('password'),
-                'vai_tro' => 'quan_tri',
-                'trang_thai' => 1,
-            ]
-        );
-
-        // Tạo tài khoản giảng viên mẫu
-        NguoiDung::firstOrCreate(
-            ['email' => 'giangvien@agoralearn.com'],
-            [
-                'ho_ten' => 'Giảng Viên Mẫu',
-                'mat_khau' => Hash::make('password'),
-                'vai_tro' => 'giang_vien',
-                'trang_thai' => 1,
-            ]
-        );
+        $this->call([
+            AdminSeeder::class,
+            GiangVienSeeder::class,
+            KhoaHocSeeder::class,
+            LopHocSeeder::class,
+            // Create Student first before enrolling
+        ]);
 
         // Tạo tài khoản học viên mẫu
         NguoiDung::firstOrCreate(
@@ -41,10 +27,18 @@ class DatabaseSeeder extends Seeder
             [
                 'ho_ten' => 'Học Viên Mẫu',
                 'mat_khau' => Hash::make('password'),
-                'vai_tro' => 'hoc_vien',
                 'trang_thai' => 1,
             ]
         );
+
+        // Continue seeding dependent data
+        $this->call([
+            DangKySeeder::class,
+            BaiGiangSeeder::class,
+            BaiTapSeeder::class,
+            NopBaiTapSeeder::class,
+            LichHocSeeder::class,
+            ThongBaoSeeder::class,
+        ]);
     }
 }
-

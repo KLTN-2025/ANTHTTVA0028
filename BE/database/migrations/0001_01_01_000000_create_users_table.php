@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('ho_ten', 120);
             $table->string('email', 190)->unique();
             $table->string('mat_khau', 255);
-            $table->enum('vai_tro', ['quan_tri', 'giang_vien', 'hoc_vien'])->default('hoc_vien');
+
             $table->string('anh_dai_dien', 255)->nullable();
             $table->tinyInteger('trang_thai')->default(1);
             $table->timestamps();
